@@ -1,0 +1,80 @@
+.wrapper {
+    width: 95%;
+    margin: 0 auto;
+}
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+thead
+{
+    border-top: 1px solid #e4e7ea;
+}
+.table td,
+.table th {
+    padding: 5px;
+    border:  1px solid #e4e7ea;
+}
+.table td {
+    position: relative;
+}
+@media screen and (max-width: 1050px) {
+    thead {
+        display: none;
+    }
+    .table td {
+        display: block;
+        padding-left: 40%;
+        border:  none;
+
+    }
+    .table td:first-child {
+        background-color: #fb9678;
+    }
+    .table td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 2%;
+        top: 50%;
+        margin-top: -10px;
+    }
+    .table tr {
+        border-bottom: 1px solid #e4e7ea;
+        background: #fff;
+    }
+}
+@media screen and (max-width: 600px) {
+    .table td:before {
+        position: static;
+        display: block;
+        background-color: #fb9678;
+        color: #fff;
+        padding: 10px;
+        margin-bottom: 7px;
+    }
+
+    .table td.no_background:before  {
+        background-color: #fff;
+        padding: 0;
+        margin: 0;
+    }
+    .table td {
+        padding: 10px;
+        text-align: center;
+
+    }
+    .table td:nth-child(odd) {
+        background-color: #fff;
+    }
+
+    .delete_button {
+        margin-top: 14px;
+    }
+}
+
+.no_background
+{
+    background: none;
+    vertical-align: middle !important;
+    margin: 0 auto;
+}

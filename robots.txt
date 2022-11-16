@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /cp/
+
+Sitemap: http://www.amc.md/sitemap.xml

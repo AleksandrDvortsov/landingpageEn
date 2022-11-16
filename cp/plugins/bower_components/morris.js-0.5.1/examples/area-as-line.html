@@ -1,0 +1,65 @@
+<!doctype html>
+<head>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+  <script src="../morris.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.min.js"></script>
+  <script src="lib/example.js"></script>
+  <link rel="stylesheet" href="lib/example.css">
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.min.css">
+  <link rel="stylesheet" href="../morris.css">
+</head>
+<body>
+<h1>Area charts behaving like line charts</h1>
+<div id="graph"></div>
+<pre id="code" class="prettyprint linenums">
+// Use Morris.Area instead of Morris.Line
+<?php /*
+
+var day_data = [
+  {"period": "2012-10-01", y: 3},
+  {"period": "2012-09-30", y: 30},
+  {"period": "2012-09-29", y: 23},
+  {"period": "2012-09-20", y: 3},
+  {"period": "2012-09-19", y: 30},
+  {"period": "2012-09-18", y: 30},
+  {"period": "2012-09-17", y: 30},
+  {"period": "2012-09-16", y: 30},
+  {"period": "2012-09-15", y: 30},
+  {"period": "2012-09-10", y: 30}
+];
+
+Morris.Area({
+  element: 'graph',
+  data: [
+    {x: '2013-03-12 22:00:00', y: 3, z: 3},
+    {x: '2013-03-13 00:00:00', y: 2, z: 0},
+    {x: '2013-03-14 02:00:00', y: 0, z: 2},
+    {x: '2013-03-15 04:00:00', y: 4, z: 4}
+  ],
+  xkey: 'x',
+  ykeys: ['y', 'z'],
+  labels: ['Y', 'Z']
+});
+*/ ?>
+var day_data = [
+  {"period": "2012-10-01", "vizitari": 3},
+  {"period": "2012-09-30", "vizitari": 30},
+  {"period": "2012-09-29", "vizitari": 23},
+  {"period": "2012-09-20", "vizitari": 3},
+  {"period": "2012-09-19", "vizitari": 30},
+  {"period": "2012-09-18", "vizitari": 60},
+  {"period": "2012-09-17", "vizitari": 20},
+  {"period": "2012-09-16", "vizitari": 10},
+  {"period": "2012-09-15", "vizitari": 0},
+  {"period": "2012-09-10", "vizitari": 30}
+];
+Morris.Area({
+  element: 'graph',
+  data: day_data,
+  xkey: 'period',
+  ykeys: ['vizitari'],
+  labels: ['Vizitari']
+});
+</pre>
+</body>

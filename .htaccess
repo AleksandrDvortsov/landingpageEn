@@ -1,0 +1,36 @@
+# Turn rewriting on
+Options +FollowSymLinks
+RewriteEngine On
+
+Header set X-Frame-Options SAMEORIGIN
+
+RewriteCond $0 !^(robots\.txt|sitemap\.xml|favicon.ico)
+RewriteCond %{REQUEST_URI} !=/libraries/captcha/simple-php-captcha.php
+RewriteCond %{REQUEST_URI} !=/cp/ckeditor/ckfinder/core/connector/php/connector.php
+
+RewriteCond %{REQUEST_URI} !=/test.php
+
+
+RewriteCond %{REQUEST_URI} !=/controller.php
+RewriteCond %{REQUEST_URI} !.*\.doc$ [NC]
+RewriteCond %{REQUEST_URI} !.*\.docx$ [NC]
+RewriteCond %{REQUEST_URI} !.*\.rar$ [NC]
+RewriteCond %{REQUEST_URI} !.*\.pdf$ [NC]
+RewriteCond %{REQUEST_URI} !.*\.zip$ [NC]
+RewriteCond %{REQUEST_URI} !.*\.txt$ [NC]
+RewriteCond %{REQUEST_URI} !.*\.png$ [NC]
+RewriteCond %{REQUEST_URI} !.*\.doc$ [NC]
+RewriteCond %{REQUEST_URI} !.*\.jpg$ [NC]
+RewriteCond %{REQUEST_URI} !.*\.jpeg$ [NC]
+RewriteCond %{REQUEST_URI} !.*\.gif$ [NC]
+RewriteCond %{REQUEST_URI} !.*\.js$ [NC]
+RewriteCond %{REQUEST_URI} !.*\.css$ [NC]
+RewriteCond %{REQUEST_URI} !.*\.ttf$ [NC]
+RewriteCond %{REQUEST_URI} !.*\.woff$ [NC]
+RewriteCond %{REQUEST_URI} !.*\.woff2$ [NC]
+RewriteCond %{REQUEST_URI} !.*\.svg$ [NC]
+RewriteCond %{REQUEST_URI} !.*\.map$ [NC]
+RewriteCond %{REQUEST_URI} !.*\.xml$ [NC]
+RewriteCond %{REQUEST_URI} !.*\.html$ [NC]
+RewriteRule .* /controller.php?url=$0 [NC,L,QSA]
+
