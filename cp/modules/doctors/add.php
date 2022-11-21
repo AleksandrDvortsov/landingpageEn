@@ -14,13 +14,15 @@ if($User->check_cp_authorization())
             $date =  new DateTime();
             $show_on_main_page = 0; if( isset($ar_post_clean["show_on_main_page"]) && !empty($ar_post_clean["show_on_main_page"]) ) { $show_on_main_page = 1; }
             $sort = $db->escape($ar_post_clean['sort']);
-            
+            $isOnline = 0; if( isset($ar_post_clean["isOnline"]) && !empty($ar_post_clean["isOnline"]) ) { $isOnline = 1; }
 
             $data_list = Array (
                 "d_id" => serialize($ar_post_clean['d_id']),
                 'show_on_main_page' => $show_on_main_page,
                 "createdAt" => $db->now(),
-                "sort"  => $sort
+                "sort"  => $sort,
+                "isOnline" => $isOnline,
+                "id_1c" => $db->escape($ar_post_clean['id_1c'])
             );
 
             foreach ($list_of_site_langs as $site_langs)
@@ -103,6 +105,9 @@ if($User->check_cp_authorization())
                                             <div class="t1 tab_content" style="display: block;">
                                                 <div class="sp_tab_indent"></div>
                                                 <?php
+
+                                                $Form->edit_checkbox($element['isOnline'],'isOnline', dictionary('ISONLINE'));
+                                                $Form->edit_title($element['id_1c'], 'id_1c', 1,'1c_ID');
 
                                                 if(!empty($db_table_images))
                                                 {

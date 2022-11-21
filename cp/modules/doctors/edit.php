@@ -28,6 +28,7 @@ if($User->check_cp_authorization())
             $active = 0; if(isset($ar_post_clean['active'])) { $active = 1; }
             $sort = $db->escape($ar_post_clean['sort']);
             $show_on_main_page = 0; if( isset($ar_post_clean["show_on_main_page"]) && !empty($ar_post_clean["show_on_main_page"]) ) { $show_on_main_page = 1; }
+            $isOnline = 0; if( isset($ar_post_clean["isOnline"]) && !empty($ar_post_clean["isOnline"]) ) { $isOnline = 1; }
             $section_id = '';
             if( isset($ar_post_clean['section_id']) && count($ar_post_clean['section_id']) > 0 )
             {
@@ -37,8 +38,10 @@ if($User->check_cp_authorization())
             $data_list = Array (
                 "active" => $active,
                 'show_on_main_page' => $show_on_main_page,
+                "isOnline" => $isOnline,
                 "d_id" => serialize($ar_post_clean['d_id']),
-                "sort"  => $sort
+                "sort"  => $sort,
+                "id_1c" => $db->escape($ar_post_clean['id_1c'])
             );
 
             foreach ($list_of_site_langs as $site_langs)
@@ -157,7 +160,13 @@ if($User->check_cp_authorization())
 
                                                     <?php
                                                     $Form->edit_active($element['active'],'active');
+
+                                                    $Form->edit_checkbox($element['isOnline'],'isOnline', dictionary('ISONLINE'));
+
                                                     $Form->edit_checkbox($element['show_on_main_page'],'show_on_main_page', dictionary('CP_SHOW_ON_MAIN_PAGE'));
+
+                                                    $Form->edit_title($element['id_1c'], 'id_1c', 1,'1c_ID');
+                                                        
 
                                                     if(!empty($db_table_images))
                                                     {
