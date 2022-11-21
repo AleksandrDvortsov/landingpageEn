@@ -6539,3 +6539,16 @@ width: 100% !important;
     color: #fff;
     margin: 0;
 }
+
+/***
+=============================================
+    doctor is online
+=============================================
+***/
+
+.icon-is-online{
+    position: absolute;
+    width: 24px !important;
+    margin: 10px;
+    z-index: 1;
+}
