@@ -596,11 +596,11 @@ if( isset($ar_post_clean['task'], $ar_post_clean['dep_id'])
                     <?php 
                         if($table_info['isOnline']){
                             ?>
-                            <img src="/images/icon/online.png" alt="" style="position: absolute;width: 24px;margin: 10px;">
+                            <img class="icon-is-online" src="/images/icon/online.png" alt="" title="<?php echo dictionary('DOCTORACCEPTSONLINE');?>">
                             <?php
                         }else{
                             ?>
-                            <img src="/images/icon/offline.png" alt="" style="position: absolute;width: 24px;margin: 10px;">
+                            <img class="icon-is-online" src="/images/icon/offline.png" alt="" title="<?php echo dictionary('DOCTORNOACCEPTSONLINE');?>">
                             <?php
                         }
                     ?>
@@ -620,10 +620,22 @@ if( isset($ar_post_clean['task'], $ar_post_clean['dep_id'])
                                     <div class="bottom">
                                         <ul>
                                             <li>
-                                                <a class="link-btn-doctor" href="<?php echo $Cpu->getURL('703', $table_info['id'])?>">
+                                                <a class="link-btn-doctor" style="<?php if($table_info['isOnline']) echo "position: inherit;" ?>" href="<?php echo $Cpu->getURL('703', $table_info['id'])?>">
                                                     <?php echo dictionary('FRONT_DETAILS');?>
                                                 </a>
                                             </li>
+                                            <?php 
+                                                if($table_info['isOnline'])
+                                                {
+                                                    ?>
+                                                     <li>
+                                                        <a class="link-btn-doctor" href="#">
+                                                            <?php echo dictionary('DOCTORACCEPTSONLINE');?>
+                                                        </a>
+                                                    </li>
+                                                    <?php
+                                                }
+                                            ?>
                                         </ul>
                                     </div>
                                 </div>
@@ -682,10 +694,22 @@ if( isset($ar_post_clean['task'], $ar_post_clean['dep_id'])
                                         <div class="bottom">
                                             <ul>
                                                 <li>
-                                                    <a class="link-btn-doctor" href="<?php echo $Cpu->getURL('703', $table_info['id'])?>">
+                                                    <a class="link-btn-doctor" style="<?php if($table_info['isOnline']) echo "position: inherit;" ?>" href="<?php echo $Cpu->getURL('703', $table_info['id'])?>">
                                                         <?php echo dictionary('FRONT_DETAILS');?>
                                                     </a>
                                                 </li>
+                                                <?php 
+                                                    if($table_info['isOnline'])
+                                                    {
+                                                        ?>
+                                                        <li>
+                                                            <a class="link-btn-doctor" href="#">
+                                                                <?php echo dictionary('DOCTORACCEPTSONLINE');?>
+                                                            </a>
+                                                        </li>
+                                                        <?php
+                                                    }
+                                                ?>
                                             </ul>
                                         </div>
                                     </div>

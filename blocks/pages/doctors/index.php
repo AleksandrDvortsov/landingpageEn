@@ -169,7 +169,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/header.php';
                                                                         <?php echo dictionary('DOCTORACCEPTSONLINE');?>
                                                                     </a>
                                                                 </li>
-                                                            <?php
+                                                                <?php
                                                             }
                                                             ?>
                                                         </ul>
