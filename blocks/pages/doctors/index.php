@@ -47,6 +47,15 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/header.php';
                                 <?php echo dictionary('DOC_PG_VIEW_ALL');?>
                             </a>
                         </li>
+
+                        <li class="jsa_get_doctors" data-dep-id="-1">
+                            <a>
+                                <div class="icon_dep">
+                                    <img src="/images/icon/internet.png" alt="">
+                                </div>
+                                <?php echo dictionary('ISONLINE');?>
+                            </a>
+                        </li>
                         <?php
                         foreach ($get_departaments as $departament) {
 
@@ -73,16 +82,36 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/header.php';
             <div class="col-md-9">
                 <div class="tab-content">
                     <div class="row" id="ajax_get_doctors_container">
-                        <div class="sp_dv7">
-                            <div class="sp_dv7T">
-                                <?php echo dictionary('DOC_PG_VIEW_ALL');?>
-                            </div>
-                        </div>
+                        
                         <?php 
-                        $get_table_info = $db
-                            ->orderBy('sort','asc')
-                            ->where('active', 1)
-                            ->get('doctors');
+                        
+                        if(isset($_GET['isOnline']) && !empty($_GET['isOnline'])){
+                            $get_table_info = $db
+                                ->orderBy('sort','asc')
+                                ->where('active', 1)
+                                ->where('isOnline', 1)
+                                ->get('doctors');?>
+                            <div class="sp_dv7">
+                                <div class="sp_dv7T">
+                                    <?php echo dictionary('ISONLINE');?>
+                                </div>
+                            </div>
+                        <?php
+                        }else{
+                            $get_table_info = $db
+                                ->orderBy('sort','asc')
+                                ->where('active', 1)
+                                ->get('doctors');
+                                ?>
+                            <div class="sp_dv7">
+                                <div class="sp_dv7T">
+                                    <?php echo dictionary('DOC_PG_VIEW_ALL');?>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                            
+                            
                         foreach ($get_table_info as $table_info)
                         {
                             $rw_id = $table_info['id'];
@@ -103,6 +132,15 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/header.php';
                             <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                 <div class="single-team-member">
                                     <div class="img-holder">
+
+                                        <?php 
+                                            if($table_info['isOnline']){
+                                                ?><img class="icon-is-online" src="/images/icon/online.png" alt="" title="<?php echo dictionary('DOCTORACCEPTSONLINE');?>"><?php
+                                            }else{
+                                                ?><img class="icon-is-online" src="/images/icon/offline.png" alt="" title="<?php echo dictionary('DOCTORNOACCEPTSONLINE');?>"><?php
+                                            }
+                                        ?>
+                                        
                                         <img src="<?php echo $thumb_image; ?>" alt="<?php echo $table_info['title_'.$lang];?>">
                                         <div class="overlay-style">
                                             <div class="box">
@@ -119,10 +157,21 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/header.php';
                                                     <div class="bottom">
                                                         <ul>
                                                             <li>
-                                                                <a class="link-btn-doctor" href="<?php echo $Cpu->getURL('703', $table_info['id'])?>">
+                                                                <a class="link-btn-doctor" style="<?php if($table_info['isOnline']) echo "position: inherit;" ?>" href="<?php echo $Cpu->getURL('703', $table_info['id'])?>">
                                                                     <?php echo dictionary('FRONT_DETAILS');?>
                                                                 </a>
                                                             </li>
+                                                            <?php 
+                                                            if($table_info['isOnline']){
+                                                                ?>
+                                                                <li>
+                                                                    <a class="link-btn-doctor" href="#">
+                                                                        <?php echo dictionary('DOCTORACCEPTSONLINE');?>
+                                                                    </a>
+                                                                </li>
+                                                            <?php
+                                                            }
+                                                            ?>
                                                         </ul>
                                                     </div>
                                                 </div>

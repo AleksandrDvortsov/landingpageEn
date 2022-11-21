@@ -513,16 +513,25 @@ if( isset($ar_post_clean['task'], $ar_post_clean['dep_id'])
 // Get doctors by departaments
 if( isset($ar_post_clean['task'], $ar_post_clean['dep_id'])
     && $ar_post_clean['task']=='get_doctors_by_departaments'
-    && $ar_post_clean['dep_id'] >= 0
+    && $ar_post_clean['dep_id'] >= -1
 )
 {
     $ajax_data = array();
     $ajax_data = $ar_post_clean;
 
-    $get_table_info = $db
-        ->orderBy('sort','asc')
-        ->where('active',1)
-        ->get('doctors');
+    if($ar_post_clean['dep_id'] == -1){
+        $get_table_info = $db
+            ->orderBy('sort','asc')
+            ->where('active', 1)
+            ->where('isOnline', 1)
+            ->get('doctors');
+    }else{
+        $get_table_info = $db
+            ->orderBy('sort','asc')
+            ->where('active',1)
+            ->get('doctors');
+    }
+
 
     if($ar_post_clean['dep_id'] == 0)
     {
@@ -530,6 +539,15 @@ if( isset($ar_post_clean['task'], $ar_post_clean['dep_id'])
         <div class="sp_dv7">
             <div class="sp_dv7T">
                 <?php echo dictionary('DOC_PG_VIEW_ALL');?>
+            </div>
+        </div>
+        <?php
+    }
+    else if($ar_post_clean['dep_id'] == -1){
+        ?>
+        <div class="sp_dv7">
+            <div class="sp_dv7T">
+                <?php echo dictionary('ISONLINE');?>
             </div>
         </div>
         <?php
@@ -555,7 +573,7 @@ if( isset($ar_post_clean['task'], $ar_post_clean['dep_id'])
     {
         $userialized_dep_elem_array = unserialize($table_info['d_id']);
 
-        if($ar_post_clean['dep_id'] == 0)
+        if($ar_post_clean['dep_id'] == 0 || $ar_post_clean['dep_id'] == -1)
         {
             $rw_id = $table_info['id'];
             $doctor_image = $db
@@ -575,6 +593,17 @@ if( isset($ar_post_clean['task'], $ar_post_clean['dep_id'])
             <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                 <div class="single-team-member">
                     <div class="img-holder">
+                    <?php 
+                        if($table_info['isOnline']){
+                            ?>
+                            <img src="/images/icon/online.png" alt="" style="position: absolute;width: 24px;margin: 10px;">
+                            <?php
+                        }else{
+                            ?>
+                            <img src="/images/icon/offline.png" alt="" style="position: absolute;width: 24px;margin: 10px;">
+                            <?php
+                        }
+                    ?>
                         <img src="<?php echo $thumb_image; ?>" alt="<?php echo $table_info['title_'.$lang];?>">
                         <div class="overlay-style">
                             <div class="box">
@@ -630,6 +659,13 @@ if( isset($ar_post_clean['task'], $ar_post_clean['dep_id'])
                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                     <div class="single-team-member">
                         <div class="img-holder">
+                        <?php 
+                            if($table_info['isOnline']){
+                                ?><img class="icon-is-online" src="/images/icon/online.png" alt="" title="<?php echo dictionary('DOCTORACCEPTSONLINE');?>"><?php
+                            }else{
+                                ?><img class="icon-is-online" src="/images/icon/offline.png" alt="" title="<?php echo dictionary('DOCTORNOACCEPTSONLINE');?>"><?php
+                            }
+                        ?>
                             <img src="<?php echo $thumb_image; ?>" alt="<?php echo $table_info['title_'.$lang];?>">
                             <div class="overlay-style">
                                 <div class="box">
@@ -669,7 +705,6 @@ if( isset($ar_post_clean['task'], $ar_post_clean['dep_id'])
 
 
     }
-
 
 }
 
