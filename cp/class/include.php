@@ -34,6 +34,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/cp/class/Logger.php';
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/cp/class/functions.php';
 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/cp/class/ERP.php';
+
 $db = new MysqliDb($SERVER_NAME, $DB_LOGIN, $DB_PASS, $DB_NAME);
 $db->setPrefix ('d_');
 $Main = new MLI($db);
@@ -48,6 +50,7 @@ $list_of_site_langs = explode(',', $GLOBALS['ar_define_settings']['LANG_SITE']);
 $Cpu = new CPU();
 $Form = new Form();
 $User = new User();
+$ERP = new ERP();
 
 // Доступы к файлам
 // !!!!!НЕ РЕДАКТИРОВАТЬ!!!!!
