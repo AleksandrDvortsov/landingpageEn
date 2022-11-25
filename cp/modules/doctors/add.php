@@ -15,6 +15,8 @@ if($User->check_cp_authorization())
             $show_on_main_page = 0; if( isset($ar_post_clean["show_on_main_page"]) && !empty($ar_post_clean["show_on_main_page"]) ) { $show_on_main_page = 1; }
             $sort = $db->escape($ar_post_clean['sort']);
             $isOnline = 0; if( isset($ar_post_clean["isOnline"]) && !empty($ar_post_clean["isOnline"]) ) { $isOnline = 1; }
+            $isOffline = 0; if( isset($ar_post_clean["isOffline"]) && !empty($ar_post_clean["isOffline"]) ) { $isOffline = 1; }
+            
 
             $data_list = Array (
                 "d_id" => serialize($ar_post_clean['d_id']),
@@ -22,6 +24,7 @@ if($User->check_cp_authorization())
                 "createdAt" => $db->now(),
                 "sort"  => $sort,
                 "isOnline" => $isOnline,
+                "isOffline" => $isOffline,
                 "id_1c" => $db->escape($ar_post_clean['id_1c'])
             );
 
@@ -107,6 +110,7 @@ if($User->check_cp_authorization())
                                                 <?php
 
                                                 $Form->edit_checkbox($element['isOnline'],'isOnline', dictionary('ISONLINE'));
+                                                $Form->edit_checkbox($element['isOffline'],'isOffline', dictionary('ISOFFLINE'));
                                                 $Form->edit_title($element['id_1c'], 'id_1c', 1,'1c_ID');
 
                                                 if(!empty($db_table_images))

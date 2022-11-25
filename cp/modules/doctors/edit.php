@@ -29,6 +29,7 @@ if($User->check_cp_authorization())
             $sort = $db->escape($ar_post_clean['sort']);
             $show_on_main_page = 0; if( isset($ar_post_clean["show_on_main_page"]) && !empty($ar_post_clean["show_on_main_page"]) ) { $show_on_main_page = 1; }
             $isOnline = 0; if( isset($ar_post_clean["isOnline"]) && !empty($ar_post_clean["isOnline"]) ) { $isOnline = 1; }
+            $isOffline = 0; if( isset($ar_post_clean["isOffline"]) && !empty($ar_post_clean["isOffline"]) ) { $isOffline = 1; }
             $section_id = '';
             if( isset($ar_post_clean['section_id']) && count($ar_post_clean['section_id']) > 0 )
             {
@@ -39,6 +40,7 @@ if($User->check_cp_authorization())
                 "active" => $active,
                 'show_on_main_page' => $show_on_main_page,
                 "isOnline" => $isOnline,
+                "isOffline" => $isOffline,
                 "d_id" => serialize($ar_post_clean['d_id']),
                 "sort"  => $sort,
                 "id_1c" => $db->escape($ar_post_clean['id_1c'])
@@ -162,6 +164,7 @@ if($User->check_cp_authorization())
                                                     $Form->edit_active($element['active'],'active');
 
                                                     $Form->edit_checkbox($element['isOnline'],'isOnline', dictionary('ISONLINE'));
+                                                    $Form->edit_checkbox($element['isOffline'],'isOffline', dictionary('ISOFFLINE'));
 
                                                     $Form->edit_checkbox($element['show_on_main_page'],'show_on_main_page', dictionary('CP_SHOW_ON_MAIN_PAGE'));
 
