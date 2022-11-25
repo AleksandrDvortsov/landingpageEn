@@ -50,7 +50,7 @@ $list_of_site_langs = explode(',', $GLOBALS['ar_define_settings']['LANG_SITE']);
 $Cpu = new CPU();
 $Form = new Form();
 $User = new User();
-$ERP = new ERP();
+$Erp = new ERP();
 
 // Доступы к файлам
 // !!!!!НЕ РЕДАКТИРОВАТЬ!!!!!
