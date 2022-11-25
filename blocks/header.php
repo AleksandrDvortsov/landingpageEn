@@ -218,6 +218,9 @@ if($User->check_cp_authorization())
                                 <div class="consultation-button">
                             <a href="#" data-toggle="modal" data-target="#exampleModal"><?php echo dictionary('FRONT_HEADER_KEY_211');?></a>
                         </div>
+                        <div class="consultation-button">
+                            <a href="<?php echo $Cpu->getURL(702); ?>?isOnline=true" ><?php echo dictionary('ONLINECONSULTATIONS');?></a>
+                        </div>
                             </div>
                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                                 <span class="icon-bar"></span>
@@ -293,6 +296,10 @@ if($User->check_cp_authorization())
                     <div class="mainmenu-right-box pull-right">
                         <div class="consultation-button">
                             <a href="#" data-toggle="modal" data-target="#exampleModal"><?php echo dictionary('FRONT_HEADER_KEY_211');?></a>
+                        </div>
+
+                        <div class="consultation-button" style=" margin-left: 10px; ">
+                            <a href="<?php echo $Cpu->getURL(702); ?>?isOnline=true" ><?php echo dictionary('ONLINECONSULTATIONS');?></a>
                         </div>
                     </div>
                     <!--End mainmenu right box-->
