@@ -47,7 +47,16 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/header.php';
                     <div class="col-md-6">
 
                         <div class="imageframe-align-center">
+                                 
                                 <span class="fusion-imageframe imageframe-none imageframe-1 hover-type-none doctor-image">
+                                    <?php 
+                                        if($element['isOnline']){
+                                            ?><img class="icon-is-online" src="/images/icon/online.png" alt="" title="<?php echo dictionary('DOCTORACCEPTSONLINE');?>"><?php
+                                        }
+                                        if($element['isOffline']){
+                                            ?><img class="icon-is-offline" src="/images/icon/offline.png" alt="" title="<?php echo dictionary('DOCTORNOACCEPTSONLINE');?>" style="<?php if($element['isOnline']) echo "margin-left: 45px;" ?>"><?php
+                                        }
+                                    ?>
                                     <?php
                                     $doctor_image = $db
                                         ->where('parent_id', $element['id'])
@@ -83,6 +92,18 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/header.php';
                                 </div>
                             </h3>
                         </div>
+
+                        <?php 
+                            if(isset($element['id_1c']) && ($element['id_1c'] === '0' || !empty($element['id_1c'])))
+                            { ?>
+                                <div class="block-appointmentdoctoronline">
+                                    <a href="<?php echo $Cpu->getURL(793); ?>?doctorID=<?php echo $element['id_1c']?>"><?php echo dictionary('APPOINTMENTDOCTORONLINE');?></a>
+                                </div>
+                            <?php
+                            }
+                        ?>
+                        
+
                     </div>
                     <div class="both"></div>
                     <div class="fusion-title title fusion-sep-none fusion-title-size-three doctor-sections-title fusion-border-below-title" style="margin-top:10px;margin-bottom:10px;">
