@@ -136,8 +136,9 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/header.php';
                                         <?php 
                                             if($table_info['isOnline']){
                                                 ?><img class="icon-is-online" src="/images/icon/online.png" alt="" title="<?php echo dictionary('DOCTORACCEPTSONLINE');?>"><?php
-                                            }else{
-                                                ?><img class="icon-is-online" src="/images/icon/offline.png" alt="" title="<?php echo dictionary('DOCTORNOACCEPTSONLINE');?>"><?php
+                                            }
+                                            if($table_info['isOffline']){
+                                                ?><img class="icon-is-offline" src="/images/icon/offline.png" alt="" title="<?php echo dictionary('DOCTORNOACCEPTSONLINE');?>" style="<?php if($table_info['isOnline']) echo "margin-left: 45px;" ?>"><?php
                                             }
                                         ?>
                                         
@@ -165,8 +166,8 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/header.php';
                                                             if($table_info['isOnline']){
                                                                 ?>
                                                                 <li>
-                                                                    <a class="link-btn-doctor" href="#">
-                                                                        <?php echo dictionary('DOCTORACCEPTSONLINE');?>
+                                                                    <a class="link-btn-doctor" href="<?php echo $Cpu->getURL(793); ?>?doctorID=<?php echo $table_info['id_1c']?>">
+                                                                        <?php echo dictionary('APPOINTMENTDOCTORONLINE');?>
                                                                     </a>
                                                                 </li>
                                                                 <?php
@@ -179,6 +180,11 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/header.php';
                                         </div>
                                         <div class="text-holder">
                                             <h3><?php echo $table_info['title_'.$lang];?></h3>
+                                            <span>
+                                                <?php
+                                                    echo  preview_text($table_info['text_2_'.$lang]).'<br/>';
+                                                ?>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>

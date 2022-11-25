@@ -598,9 +598,10 @@ if( isset($ar_post_clean['task'], $ar_post_clean['dep_id'])
                             ?>
                             <img class="icon-is-online" src="/images/icon/online.png" alt="" title="<?php echo dictionary('DOCTORACCEPTSONLINE');?>">
                             <?php
-                        }else{
+                        }
+                        if($table_info['isOffline']){
                             ?>
-                            <img class="icon-is-online" src="/images/icon/offline.png" alt="" title="<?php echo dictionary('DOCTORNOACCEPTSONLINE');?>">
+                            <img class="icon-is-offline" src="/images/icon/offline.png" alt="" title="<?php echo dictionary('DOCTORNOACCEPTSONLINE');?>" style="<?php if($table_info['isOnline']) echo "margin-left: 45px;" ?>">
                             <?php
                         }
                     ?>
@@ -630,7 +631,7 @@ if( isset($ar_post_clean['task'], $ar_post_clean['dep_id'])
                                                     ?>
                                                      <li>
                                                         <a class="link-btn-doctor" href="#">
-                                                            <?php echo dictionary('DOCTORACCEPTSONLINE');?>
+                                                            <?php echo dictionary('APPOINTMENTDOCTORONLINE');?>
                                                         </a>
                                                     </li>
                                                     <?php
@@ -643,6 +644,11 @@ if( isset($ar_post_clean['task'], $ar_post_clean['dep_id'])
                         </div>
                         <div class="text-holder">
                             <h3><?php echo $table_info['title_'.$lang];?></h3>
+                            <span>
+                                <?php
+                                    echo  preview_text($table_info['text_2_'.$lang]).'<br/>';
+                                ?>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -704,7 +710,7 @@ if( isset($ar_post_clean['task'], $ar_post_clean['dep_id'])
                                                         ?>
                                                         <li>
                                                             <a class="link-btn-doctor" href="#">
-                                                                <?php echo dictionary('DOCTORACCEPTSONLINE');?>
+                                                                <?php echo dictionary('APPOINTMENTDOCTORONLINE');?>
                                                             </a>
                                                         </li>
                                                         <?php
