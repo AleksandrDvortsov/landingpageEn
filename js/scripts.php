@@ -73,6 +73,8 @@ else
     <script src="/assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
     <script src="/assets/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
     <script src="/assets/revolution/js/extensions/revolution.extension.video.min.js"></script>
+
+    <script src="/js/jquery.maskedinput.js"></script>
     <?php
 }
 ?>

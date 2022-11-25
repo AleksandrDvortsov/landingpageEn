@@ -728,7 +728,8 @@ select:focus {
 
 
 .mainmenu-right-box {
-    width: 220px;
+    display: flex;
+    width: 260px;
     position: relative;
 }
 .mainmenu-right-box .cart_select {
@@ -766,7 +767,7 @@ select:focus {
   
     border-radius: 9px;
     display: inline-block;
-    width: 220px;
+    width: 140px;
     height: 60px;
     background-image: linear-gradient(to right, #4b82bc 0%, #8495cc 100%);
     transition: all .5s ease;
@@ -775,7 +776,7 @@ select:focus {
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
-    line-height: 64px;
+    line-height: 32px;
     font-family: "Source Sans Pro", sans-serif;
     margin-top: 5px;
 }
@@ -6546,9 +6547,199 @@ width: 100% !important;
 =============================================
 ***/
 
-.icon-is-online{
+.icon-is-online, .icon-is-offline{
     position: absolute;
     width: 24px !important;
     margin: 10px;
     z-index: 1;
+}
+
+.block-appointmentdoctoronline{
+    display: flex; 
+    justify-content: end;
+}
+
+.block-appointmentdoctoronline a{
+    border-radius: 9px;
+    display: inline-block;
+    width: 250px;
+    height: 60px;
+    background-image: linear-gradient(to right, #4b82bc 0%, #8495cc 100%);
+    transition: all .5s ease;
+    text-align: center;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 64px;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-top: 5px;
+}
+
+.main-form__label {
+    font-size: 1.4rem;
+    color: #999999;
+    margin-bottom: 0.5rem;
+}
+
+.main-form__label span {
+    color: #ff4747;
+}
+
+.main-form__field.error, .error__desc{
+    display: block;
+    font-size: 1.2rem;
+    color: #ff4747;
+    display: block;
+}
+.error__desc{
+    text-align: right;
+}
+
+.main-form__field.error input{
+    background-color: #fff7f7;
+    border-color: #ff7f7f;
+    -webkit-box-shadow: 0 0 7px rgb(255 51 51 / 20%);
+    box-shadow: 0 0 7px rgb(255 51 51 / 20%);
+}
+
+.main-form__input {
+    padding: 1rem 0.5rem;
+    width: 100%;
+    outline: none;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+}
+
+
+.btn--main[disabled]:hover{
+    background: #3498db;
+}
+
+
+.btn{
+    background: #4B82Bc;
+    border: 2px solid #4B82Bc;
+    color: #ffffff;
+    transition: all 500ms ease;
+}
+
+.btn[disabled]{
+    opacity: .7;
+    cursor: default;
+    -webkit-filter: grayscale(50%);
+    filter: grayscale(50%);
+}
+
+.btn:hover{
+    background: #4B82Bc;
+    color: #ffffff;
+}
+
+.btn:focus{
+    background: #4B82Bc;
+    border: 2px solid #4B82Bc;
+    color: #ffffff;
+    outline: none;
+}
+
+.checkbox-label__main{
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: #16191d;
+    height: 100%;
+    padding: 0 1.5rem 0 2.5rem;
+    position: relative;
+    margin: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    line-height: 1.6rem;
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    min-width: 1.6rem;
+    min-height: 1.6rem;
+}
+
+.main-form__field .checkbox-label__main{
+    white-space: normal;
+    padding-left: 3rem;
+    color: #999999;
+    padding-top: 1px;
+    display: block;
+}
+
+.main-form__field .checkbox-label__input:checked + label{
+    color: #16191d;
+}
+
+.checkbox-label__input{
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    left: -9999px;
+}
+
+.checkbox-label__main::before{
+    content: "";
+    width: 1.6rem;
+    height: 1.6rem;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    color: #ffffff;
+    text-align: center;
+    line-height: 1.6rem;
+    font-family: FontAwesome;
+    font-size: 1.2rem;
+    background: #ffffff;
+}
+
+.checkbox-label__input:checked + .checkbox-label__main::before{
+    content: "\f00c";
+    width: 1.6rem;
+    height: 1.6rem;
+    background: #3498db;
+    border-color: #3498db;
+}
+
+#Timereservation-error{
+    text-align: left;
+}
+
+@media all and (max-width: 768px){
+    .block-appointmentdoctoronline{
+        justify-content: center;
+    }
+
+    .mobil-button{
+        display: flex !important;
+    }
+
+    .mobil-button > div:first-child{
+        margin-right: 10px;
+    }
+
+    .mobil-button .consultation-button a{
+        width: 140px !important; 
+        line-height: 32px !important;
+    }
 }
