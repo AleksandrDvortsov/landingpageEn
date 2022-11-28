@@ -56,6 +56,8 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16">
+
+    <link rel="stylesheet" href="/css/onlineconsultations.css?v=<?php echo $css_version;?>">
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <script src="/js/html5shiv.js"></script>
@@ -185,7 +187,10 @@ if($User->check_cp_authorization())
                                     {
                                          ?>
                                         <li class="lang_cahs">
-                                            <a href="<?php echo $Cpu->getURLbyLang($pageData['page_id'],$pageData['elem_id'], $site_lang);?>">
+                                            <a href="<?php
+                                                $getParam = parse_url($_SERVER['REQUEST_URI'])['query'];
+                                                if(!empty($getParam)) echo $Cpu->getURLbyLang($pageData['page_id'],$pageData['elem_id'], $site_lang)."?".$getParam;
+                                                else echo $Cpu->getURLbyLang($pageData['page_id'],$pageData['elem_id'], $site_lang);?>">
                                                 <?php echo mb_ucfirst($site_lang);?>
                                             </a>
                                         </li>
