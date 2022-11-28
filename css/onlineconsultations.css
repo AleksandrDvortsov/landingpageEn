@@ -1,0 +1,262 @@
+#multi-step-form-container {
+    margin-top: 5rem;
+}
+
+/* .button {
+    padding: 0.7rem 1.5rem;
+    border: 1px solid #4789c8;
+    background-color: #4789c8;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+} */
+
+.submit-btn {
+    border: 1px solid #7cbf74;
+    background-color: #7cbf74;
+}
+
+.mt-3 {
+    margin-top: 2rem;
+}
+
+.d-none {
+    display: none;
+}
+
+.form-step {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 3rem;
+}
+
+.font-normal {
+    font-weight: normal;
+}
+
+ul.form-stepper {
+    counter-reset: section;
+    margin-bottom: 3rem;
+}
+
+ul.form-stepper .form-stepper-circle {
+    position: relative;
+}
+
+ul.form-stepper .form-stepper-circle span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+.form-stepper-horizontal {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+ul.form-stepper>li:not(:last-of-type) {
+    margin-bottom: 0.625rem;
+    -webkit-transition: margin-bottom 0.4s;
+    -o-transition: margin-bottom 0.4s;
+    transition: margin-bottom 0.4s;
+}
+
+.form-stepper-horizontal>li:not(:last-of-type) {
+    margin-bottom: 0 !important;
+}
+
+.form-stepper-horizontal li {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: start;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.form-stepper-horizontal li:not(:last-child):after {
+    position: relative;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    height: 1px;
+    content: "";
+    top: 32%;
+}
+
+.form-stepper-horizontal li:after {
+    background-color: #dee2e6;
+}
+
+.form-stepper-horizontal li.form-stepper-completed:after {
+    background-color: #4da3ff;
+}
+
+.form-stepper-horizontal li:last-child {
+    flex: unset;
+}
+
+ul.form-stepper li a .form-stepper-circle {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-right: 0;
+    line-height: 1.7rem;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.38);
+    border-radius: 50%;
+}
+
+.form-stepper .form-stepper-active .form-stepper-circle {
+    background-color: #4789c8 !important;
+    color: #fff;
+}
+
+.form-stepper .form-stepper-active .label {
+    color: #4789c8 !important;
+}
+
+.form-stepper .form-stepper-active .form-stepper-circle:hover {
+    background-color: #4789c8 !important;
+    color: #fff !important;
+}
+
+.form-stepper .form-stepper-unfinished .form-stepper-circle {
+    background-color: #f8f7ff;
+}
+
+.form-stepper .form-stepper-completed .form-stepper-circle {
+    background-color: #7cbf74 !important;
+    color: #fff;
+}
+
+.form-stepper .form-stepper-completed .label {
+    color: #7cbf74 !important;
+}
+
+.form-stepper .form-stepper-completed .form-stepper-circle:hover {
+    background-color: #7cbf74 !important;
+    color: #fff !important;
+}
+
+.form-stepper .form-stepper-active span.text-muted {
+    color: #fff !important;
+}
+
+.form-stepper .form-stepper-completed span.text-muted {
+    color: #fff !important;
+}
+
+.form-stepper .label {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+.form-stepper a {
+    cursor: default;
+}
+#calendar {
+    width: 100%;
+    height: 500px;
+    border-collapse: collapse;
+}
+
+#calendar tbody td {
+    border: 1px solid black;
+    text-align: right;
+    vertical-align: top;
+    width: 14%;
+}
+
+#calendar td.empty {
+    border: none;
+}
+
+.block-reservation-time-tab {
+    align-items: stretch;
+    inline-size: 1600px;
+    perspective-origin: 800px 327px;
+    transform-origin: 800px 327px;
+    width: 1600px;
+    display: flex;
+    overflow-x: auto;
+    max-inline-size: 100%;
+    flex: 0 0 auto;
+    margin: 0px 1px;
+}
+
+.reservation-tab-colum {
+    align-content: stretch;
+    align-items: stretch;
+    backface-visibility: hidden;
+    display: flex;
+    float: left;
+    inline-size: 80px;
+    justify-content: flex-start;
+    min-block-size: 1px;
+    min-height: 1px;
+    perspective-origin: 40px 327px;
+    text-align: center;
+    transform-origin: 40px 327px;
+    user-select: none;
+    width: 80px;
+    flex-flow: column nowrap;
+
+}
+.reservation-tab-head{
+    block-size: 60px;
+    font-size: 14px;
+    height: 60px;
+    inline-size: 80px;
+    line-height: 22px;
+    margin-block-end: 18px;
+    min-block-size: auto;
+    min-height: auto;
+    padding-block-start: 16px;
+    perspective-origin: 40px 30px;
+    text-align: center;
+    transform-origin: 40px 30px;
+    width: 80px;
+    margin: 0px 0px 18px;
+    padding: 16px 0px 0px;
+}
+
+.reservation-tab-head div{
+    block-size: 44px;
+    font-size: 14px;
+    height: 44px;
+    inline-size: 80px;
+    line-height: 22px;
+    perspective-origin: 40px 22px;
+    text-align: center;
+    transform-origin: 40px 22px;
+    width: 80px;
+}
+
+.reservation-tab-body div {
+    color: white;
+    height: 40px;
+    line-height: 40px;
+    width: 72px;
+    background: rgb(40, 128, 221) none repeat scroll 0% 0% / auto padding-box border-box;
+    border: 1px solid rgb(40, 128, 221);
+    margin: 0px 3.5px 8px;
+    border-radius: 10px;
+}
+
+.time_new[type=radio]{
+    visibility: hidden;
+    position: absolute;
+}
