@@ -3,21 +3,34 @@ class ERP {
 
     private $serverAddress = null;
     private $request_type=['POST'=>'POST','GET'=>'GET'];
+    private $testPrice = null; 
+    private $testSchedule = null; 
 
 	public function __construct() {
         $this->serverAddress = 'http://http://10.31.8.24:5994/WebExportService/json/';
+
+        $this->testPrice = ["DoctorId" => 37, "PriceOffline" => 500, "PriceOnline" => 250]; 
+        $this->testSchedule = ["DoctorId" => 37,"Schedule" => [[
+            "Online" => [["VisitDate" => "28.11.2022", "VisitTime" => "09.00", "Availability" => false],["VisitDate" => "28.11.2022", "VisitTime" => "10.00","Availability" => true], ["VisitDate" => "29.11.2022", "VisitTime" => "09.00", "Availability" => true], ["VisitDate" => "29.11.2022", "VisitTime" => "09.30", "Availability" => false], ["VisitDate" => "29.11.2022", "VisitTime" => "10.00", "Availability" => true], ["VisitDate" => "30.11.2022", "VisitTime" => "09.00", "Availability" => true], ["VisitDate" => "30.11.2022", "VisitTime" => "09.30", "Availability" => false], ["VisitDate" => "30.11.2022", "VisitTime" => "10.00", "Availability" => true], ["VisitDate" => "01.12.2022", "VisitTime" => "10.00", "Availability" => true], ["VisitDate" => "02.12.2022", "VisitTime" => "10.00", "Availability" => true],["VisitDate" => "02.12.2022", "VisitTime" => "10.30", "Availability" => false]], 
+            "Offline" => [["VisitDate" => "28.11.2022", "VisitTime" => "09.00","Availability" => false],["VisitDate" => "28.11.2022", "VisitTime" => "10.00", "Availability" => true ], ["VisitDate" => "29.11.2022", "VisitTime" => "09.00","Availability" => false],["VisitDate" => "29.11.2022", "VisitTime" => "10.00", "Availability" => true ], ["VisitDate" => "29.11.2022", "VisitTime" => "11.30","Availability" => false],["VisitDate" => "29.11.2022", "VisitTime" => "12.00", "Availability" => true ], ["VisitDate" => "30.11.2022", "VisitTime" => "09.00","Availability" => false],["VisitDate" => "30.11.2022", "VisitTime" => "10.00", "Availability" => true ]]]]]; 
 	}
 
+
+
     public function GetAdmissionSchedule($doctor_id){
-        $query = 'GetAdmissionSchedule?doctor_id='.$doctor_id;
-        $response = $this->doQuery($query,'',$this->request_type['GET']);
-        $param = $this->parseResponse($response);
-        if(isset($param['ErrorCode'])&&!$param['ErrorCode']){
-            $schedule = $param['Schedule'];
-        }else{
-            $schedule = 'error';
-        }
-        return $schedule;
+        // $query = 'GetAdmissionSchedule?doctor_id='.$doctor_id;
+        // $response = $this->doQuery($query,'',$this->request_type['GET']);
+        // $param = $this->parseResponse($response);
+        $param = $this->testSchedule;
+        
+        return $param['Schedule'];;
+    }
+
+    public function GetPrice($doctor_id){
+        // $query = 'GetPrice?doctor_id='.$doctor_id;
+        // $response = $this->doQuery($query,'',$this->request_type['GET']);
+        // $param = $this->parseResponse($response);
+        return $this->testPrice;
     }
 
     public function ReservationTime($doctor_id, $time_id){
