@@ -303,7 +303,7 @@ if($User->check_cp_authorization())
                             <a href="#" data-toggle="modal" data-target="#exampleModal"><?php echo dictionary('FRONT_HEADER_KEY_211');?></a>
                         </div>
 
-                        <div class="consultation-button" style=" margin-left: 10px; ">
+                        <div class="consultation-button" style=" margin-left: 5px; ">
                             <a href="<?php echo $Cpu->getURL(702); ?>?isOnline=true" ><?php echo dictionary('ONLINECONSULTATIONS');?></a>
                         </div>
                     </div>

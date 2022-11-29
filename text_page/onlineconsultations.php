@@ -72,9 +72,12 @@ if(!isset($_GET['doctorID']) && empty($_GET['doctorID'])){
                     <div class="col-md-12">
                         <div class="left pull-left">
                             <ul>
-                                <li><a href="<?php echo $Cpu->getURL(100);?>"><?php echo dictionary('HEADER_HOME_PAGE'); ?></a></li>
+                                <li><a href="<?php echo $Cpu->getURL('100'); ?>"><?php echo dictionary('HEADER_HOME_PAGE'); ?></a></li>
                                 <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
-                                <!-- <li class="active"><?php echo dictionary('HEADER_CONTACT_US');?></li> -->
+                                <li><a href="<?php echo $Cpu->getURL('702'); ?>"><?php echo dictionary('HEADER_TEAM_PAGE'); ?></a></li>
+                                <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                                <li><a href="<?php echo $Cpu->getURL('703', $get_doctor['id'])?>"><?php echo $get_doctor['page_title_'.$lang]; ?></a></li>
+                                <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
                                 <li class="active"><?php echo dictionary('CHOICERECEPTIONMETHOD');?></li>
                             </ul>
                         </div>

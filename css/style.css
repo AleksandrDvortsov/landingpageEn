@@ -759,7 +759,6 @@ select:focus {
     font-weight: 600;
 }
 .mainmenu-right-box .consultation-button {
-    width: 220px;
     float: right;
     display: inline-block;
 }
@@ -767,13 +766,13 @@ select:focus {
   
     border-radius: 9px;
     display: inline-block;
-    width: 140px;
+    width: 115px;
     height: 60px;
     background-image: linear-gradient(to right, #4b82bc 0%, #8495cc 100%);
     transition: all .5s ease;
     text-align: center;
     color: #ffffff;
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 700;
     text-transform: uppercase;
     line-height: 32px;
@@ -6576,6 +6575,24 @@ width: 100% !important;
     margin-top: 5px;
 }
 
+.step1-header{
+    display: flex; 
+    justify-content: space-between;
+}
+
+.reception-type{
+    display: flex;
+    align-items: center;
+}
+
+.reception-type label{
+    cursor: pointer;
+}
+
+.reception-type label p{
+    margin: 0px;
+}
+
 .main-form__label {
     font-size: 1.4rem;
     color: #999999;
@@ -6591,9 +6608,6 @@ width: 100% !important;
     font-size: 1.2rem;
     color: #ff4747;
     display: block;
-}
-.error__desc{
-    text-align: right;
 }
 
 .main-form__field.error input{
