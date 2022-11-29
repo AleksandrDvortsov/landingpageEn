@@ -521,9 +521,9 @@ if( isset($ar_post_clean['task'], $ar_post_clean['dep_id'])
 
     if($ar_post_clean['dep_id'] == -1){
         $get_table_info = $db
+            ->orderBy('isOnline','desc')
             ->orderBy('sort','asc')
             ->where('active', 1)
-            ->where('isOnline', 1)
             ->get('doctors');
     }else{
         $get_table_info = $db
@@ -621,22 +621,15 @@ if( isset($ar_post_clean['task'], $ar_post_clean['dep_id'])
                                     <div class="bottom">
                                         <ul>
                                             <li>
-                                                <a class="link-btn-doctor" style="<?php if($table_info['isOnline']) echo "position: inherit;" ?>" href="<?php echo $Cpu->getURL('703', $table_info['id'])?>">
+                                                <a class="link-btn-doctor" style="position: inherit;" href="<?php echo $Cpu->getURL('703', $table_info['id'])?>">
                                                     <?php echo dictionary('FRONT_DETAILS');?>
                                                 </a>
                                             </li>
-                                            <?php 
-                                                if($table_info['isOnline'])
-                                                {
-                                                    ?>
-                                                     <li>
-                                                        <a class="link-btn-doctor" href="#">
-                                                            <?php echo dictionary('APPOINTMENTDOCTORONLINE');?>
-                                                        </a>
-                                                    </li>
-                                                    <?php
-                                                }
-                                            ?>
+                                            <li>
+                                                <a class="link-btn-doctor" href="<?php echo $Cpu->getURL(793); ?>?doctorID=<?php echo $table_info['id_1c']?>">
+                                                    <?php echo dictionary('APPOINTMENTDOCTORONLINE');?>
+                                                </a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>

@@ -87,9 +87,9 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/header.php';
                         
                         if(isset($_GET['isOnline']) && !empty($_GET['isOnline'])){
                             $get_table_info = $db
+                                ->orderBy('isOnline','desc')
                                 ->orderBy('sort','asc')
                                 ->where('active', 1)
-                                ->where('isOnline', 1)
                                 ->get('doctors');?>
                             <div class="sp_dv7">
                                 <div class="sp_dv7T">
@@ -158,21 +158,15 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/header.php';
                                                     <div class="bottom">
                                                         <ul>
                                                             <li>
-                                                                <a class="link-btn-doctor" style="<?php if($table_info['isOnline']) echo "position: inherit;" ?>" href="<?php echo $Cpu->getURL('703', $table_info['id'])?>">
+                                                                <a class="link-btn-doctor" style="position: inherit;" href="<?php echo $Cpu->getURL('703', $table_info['id'])?>">
                                                                     <?php echo dictionary('FRONT_DETAILS');?>
                                                                 </a>
                                                             </li>
-                                                            <?php 
-                                                            if($table_info['isOnline']){
-                                                                ?>
-                                                                <li>
-                                                                    <a class="link-btn-doctor" href="<?php echo $Cpu->getURL(793); ?>?doctorID=<?php echo $table_info['id_1c']?>">
-                                                                        <?php echo dictionary('APPOINTMENTDOCTORONLINE');?>
-                                                                    </a>
-                                                                </li>
-                                                                <?php
-                                                            }
-                                                            ?>
+                                                            <li>
+                                                                <a class="link-btn-doctor" href="<?php echo $Cpu->getURL(793); ?>?doctorID=<?php echo $table_info['id_1c']?>">
+                                                                    <?php echo dictionary('APPOINTMENTDOCTORONLINE');?>
+                                                                </a>
+                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </div>
